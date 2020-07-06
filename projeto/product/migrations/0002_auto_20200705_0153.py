@@ -4,6 +4,9 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
+    atomic = False
+
+    initial = True
 
     dependencies = [
         ('estoque', '0001_initial'),
