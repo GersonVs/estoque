@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %} <!--https://github.com/jazzband/django-widget-tweaks-->
+
+{% block content %}
+
+<form method="POST" novalidate>
+    {% csrf_token %} <!--Token necessario para fazer o POST dos dados no formulário-->
+
+</form>
+
+{% endblock content %}

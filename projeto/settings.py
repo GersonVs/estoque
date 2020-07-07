@@ -39,9 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #app de terceiro
+    'widget_tweaks',
+    #meus apps
     'projeto.core',
     'projeto.product',
     'projeto.estoque',
+
 ]
 
 MIDDLEWARE = [

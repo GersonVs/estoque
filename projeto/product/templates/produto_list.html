@@ -3,7 +3,16 @@
 {% block content %}
 
 <div class="page-header">
-    <h2><i class="fa fa-user"></i>Lista de produtos</h2>
+    <h2>Lista de produtos
+        <span class="pull-right">
+            <!--Botão que redireciona para tela de adicionar produto-->
+            <a href="{% url 'product:produto_add' %}">
+                <button type="button" class="btn btn-primary">
+                    <span class="fa fa-plus"></span>Adicionar
+                </button>
+            </a>
+        </span>
+    </h2>
     
     {% if object_list %}
 
