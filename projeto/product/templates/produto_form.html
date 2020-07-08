@@ -12,6 +12,14 @@
 {% endblock css %}
 
 {% block content %}
+<span class="pull-right">
+    <a href="{% url 'product:produto_list' %}">
+        <button type="button" class="btn btn-link">
+            <span class="fa fa-chevron-left"></span> Voltar
+        </button>
+    </a>   
+</span>
+
 
 <form method="POST" novalidate>
     {% csrf_token %} <!--Token necessario para fazer o POST dos dados no formulário-->

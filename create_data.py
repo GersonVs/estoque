@@ -32,7 +32,7 @@ class ProdutoClass:
             )
             obj = Produto(**data)
             aux.append(obj)
-        Produto.objects.bulk_create(aux)
+        Produto.objects.bulk_create(aux)#o metodo bulk_create insere a lista de objetos fornecida no banco de dados 
  
 produtos = (
     'Carne',

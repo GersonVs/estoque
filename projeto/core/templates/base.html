@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,8 +31,35 @@
 
   </head>
   <body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="{% url 'core:index' %}">Principal</a>
 
-    {% include "includes/nav.html" %}
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'product:produto_list' %}">Produtos</a>
+              </li>
+              {% else %}
+              <div class="pull-right">
+                <li class="nav-item">
+                  <a class="nav-link" href="/accounts/login">Entrar</a>
+                </li>
+              </div>
+              
+              {% endif %}
+              {% if user.is_authenticated %}
+              <div class="pull-right">
+
+              </div>
+              <li class="nav-item">
+                      <a class="nav-link" href="/accounts/logout">Sair</a>
+                  </li>
+              {% endif %}
+          </ul>
+      </div>
+    </nav>
 
     <div class="container">
       {% block content %}{% endblock content %}
