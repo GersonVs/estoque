@@ -28,3 +28,10 @@ class ProdutoUpdate(UpdateView):
     model = Produto
     template_name = 'produto_form.html'
     form_class = ProdutoForm
+
+def produto_delete(request, pk): 
+   produto = Produto.objects.get(pk=pk)
+   produto.delete()
+   obj=Produto.objects.all()
+   context={'object_list': obj}
+   return render(request, 'produto_list.html', context)
