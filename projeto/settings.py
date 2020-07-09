@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'projeto.core',
     'projeto.product',
     'projeto.estoque',
-
+    'projeto.accounts',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
