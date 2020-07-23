@@ -1,0 +1,10 @@
+<form method="post">    
+    {% csrf_token %}
+
+    Você tem certeza que quer excluir o produto <b>{{ produto.produto }}</b>? <br><br>
+
+    <button type="button">
+        <a href="{% url 'product:produto_list' %}">Cancelar</a>
+    </button>
+    <button>Excluir</button>
+</form>
