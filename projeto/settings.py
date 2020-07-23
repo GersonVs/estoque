@@ -65,7 +65,7 @@ ROOT_URLCONF = 'projeto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],#os.path o windows abstrai e "/" assim ele acha a URL base do projeto e adiciona  a pasta templates ao fim
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
