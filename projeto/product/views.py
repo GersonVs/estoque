@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.decorators import permission_required
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework import generics
+from .serializers import ProdutoSerializer
 from .models import Produto
 from .forms import ProdutoForm
 
@@ -19,7 +20,7 @@ class ProdutoList(LoginRequiredMixin,ListView):
     template_name = 'produto_list.html'
 
 @login_required
-@permission_required('product.pode_adicionar_produto')
+
 def produto_detail(request, pk):
     template_name = 'produto_detail.html'
     obj = Produto.objects.get(pk=pk)
@@ -49,3 +50,10 @@ def produto_delete(request, pk):
 #     template_name = 'produto_delete.html'
 #     context_object_name = 'produto'
 #     success_url = reverse_lazy('product:produto_list')
+
+#       API      #
+
+class ProdutoListApi(generics.ListCreateAPIView):
+    queryset = Produto.objects.all()
+    serializer_class = ProdutoSerializer
+

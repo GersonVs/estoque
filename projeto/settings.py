@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #app de terceiro
     'widget_tweaks',
     'crispy_forms',
+    'rest_framework',
     #meus apps
     'projeto.core',
     'projeto.product',
