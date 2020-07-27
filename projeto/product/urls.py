@@ -1,5 +1,4 @@
 from django.urls import path
-from django.conf.urls import url
 from projeto.product import views as v
 
 app_name='product'
@@ -10,5 +9,5 @@ urlpatterns=[
     path('add/', v.ProdutoCreate.as_view(), name='produto_add'),
     path('edit/<int:pk>', v.ProdutoUpdate.as_view(), name='produto_edit'),
     path('delete/<int:pk>', v.produto_delete, name='produto_delete'),
-    path('produtos/', v.ProdutoListApi.as_view(), name='produto-list'),
+    
 ]

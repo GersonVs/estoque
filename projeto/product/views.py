@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from .serializers import ProdutoSerializer
 from .models import Produto
 from .forms import ProdutoForm
@@ -53,7 +53,11 @@ def produto_delete(request, pk):
 
 #       API      #
 
-class ProdutoListApi(generics.ListCreateAPIView):
+class ProdutoListApi(viewsets.ModelViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
 
+
+# class ProdutoListApi(generics.ListCreateAPIView):
+#     queryset = Produto.objects.all()
+#     serializer_class = ProdutoSerializer
