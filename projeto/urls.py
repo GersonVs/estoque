@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import include, url
 from projeto.product.views import ProdutoListApi
 from rest_framework import routers
 
@@ -22,11 +23,11 @@ router = routers.DefaultRouter()
 router.register(r'produtos', ProdutoListApi)
 
 urlpatterns = [
-    path('api/',include(router.urls)),
-    path('', include('projeto.core.urls')),
-    path('produto/', include('projeto.product.urls')),
-    path('admin/', admin.site.urls),
-    path('accounts/', include('projeto.accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-
+    path('api/'         ,include(router.urls)),
+    path(''             , include('projeto.core.urls')),
+    path('produto/'     , include('projeto.product.urls')),
+    path('admin/'       , admin.site.urls),
+    path('accounts/'    , include('projeto.accounts.urls')),
+    path('accounts/'    , include('django.contrib.auth.urls')),
+    path('chat/'        , include('projeto.estoque.urls')),
 ]

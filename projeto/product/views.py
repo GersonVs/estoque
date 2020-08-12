@@ -7,13 +7,6 @@ from .serializers import ProdutoSerializer
 from .models import Produto
 from .forms import ProdutoForm
 
-# @login_required
-# def produto_list(request):
-#     template_name = 'produto_list.html'
-#     objects = Produto.objects.all()
-#     context={'object_list': objects}
-#     return render(request, template_name, context)
-
 class ProdutoList(LoginRequiredMixin,ListView):
     model = Produto
     queryset = Produto.objects.all()
@@ -44,20 +37,8 @@ def produto_delete(request, pk):
    produto = Produto.objects.get(pk=pk)
    produto.delete()
    return render(request, 'produto_list.html', context)
-   
-# class ProdutoDelete(LoginRequiredMixin,DeleteView):
-#     model = Produto
-#     template_name = 'produto_delete.html'
-#     context_object_name = 'produto'
-#     success_url = reverse_lazy('product:produto_list')
-
-#       API      #
 
 class ProdutoListApi(viewsets.ModelViewSet):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
 
-
-# class ProdutoListApi(generics.ListCreateAPIView):
-#     queryset = Produto.objects.all()
-#     serializer_class = ProdutoSerializer

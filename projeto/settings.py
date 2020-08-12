@@ -29,10 +29,33 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_Origin_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS  = [
+     'DELETE' ,
+     'GET' ,
+     'OPTIONS' ,
+     'PATCH' ,
+     'POST' ,
+     'PUT' ,
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +66,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'rest_framework',
+    'corsheaders',
     #meus apps
     'projeto.core',
     'projeto.product',
@@ -52,6 +76,7 @@ INSTALLED_APPS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,12 +86,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'projeto.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],#os.path o windows abstrai e "/" assim ele acha a URL base do projeto e adiciona  a pasta templates ao fim
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,8 +105,16 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'projeto.wsgi.application'
+ASGI_APPLICATION = "projeto.routing.application"
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
