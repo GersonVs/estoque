@@ -15,7 +15,7 @@ Django==3.0.8
 django-cors-headers==3.4.0
 django-crispy-forms==1.9.1
 django-widget-tweaks==1.4.8
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 filter==0.0.0.20200724
 hiredis==1.1.0
 hyperlink==19.0.0
